@@ -41,4 +41,22 @@ public class BinaryTreePreorderTraversal {
         }
         return result;
     }
+
+        static List<Integer> preorderTraversalRecursively(TreeNode root) {
+            // recursive version
+            List<Integer> result = new ArrayList<>();
+            if(root == null) {
+                return new ArrayList<>();
+            }
+            recurse(root, result);
+            return result;
+        }
+        static void recurse(TreeNode root, List<Integer> res) {
+            if(root == null) {
+                return;
+            }
+            res.add(root.val);
+            recurse(root.left, res);
+            recurse(root.right, res);
+        }
 }
