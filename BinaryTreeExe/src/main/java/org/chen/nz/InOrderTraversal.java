@@ -1,3 +1,8 @@
+package org.chen.nz;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 public class InOrderTraversal {
   public void main(String[] args){
@@ -18,7 +23,7 @@ public class InOrderTraversal {
                 root = nodeStacks.pop();
                 result.add(root.val);
                 root = root.right;
-                
+
             }
         }
         return result;
