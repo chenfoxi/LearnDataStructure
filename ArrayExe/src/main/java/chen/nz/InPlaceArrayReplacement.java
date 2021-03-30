@@ -52,4 +52,30 @@ public class InPlaceArrayReplacement {
         length = i + 1;
         return length;
     }
+
+    /**
+     * Given an integer array nums, move all 0's to the end of it
+     * while maintaining the relative order of the non-zero elements.
+     * Note that you must do this in-place without making a copy of the array.
+     * @param nums
+     */
+    public void moveZeroes(int[] nums) {
+       int i = 0, j = 0, N = nums.length;
+       while(i < N && j < N ) {
+           if(nums[j] == 0) {
+               // iterate until finding the first non-zero item
+               j++;
+           } else {
+               if(i == j) {
+                   //skip the non-zero item already at the right side
+                   j++;
+               } else {
+                   int temp = nums[j];
+                   nums[j] = nums[i];
+                   nums[i] = temp;
+               }
+               i++;
+           }
+       }
+    }
 }
