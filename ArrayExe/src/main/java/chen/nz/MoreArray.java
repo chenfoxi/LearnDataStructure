@@ -1,5 +1,6 @@
 package main.java.chen.nz;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -39,5 +40,33 @@ public class MoreArray {
             if(reorder[i] != heights[i]) changed++;
         }
         return changed;
+    }
+
+    /**
+     * no sort version
+     * @param heights
+     * @return
+     */
+    public int heightCheckerNoSort(int[] heights) {
+        // according to the constraint, the max size of the input array is 100
+       int[] heightFreq = new int[101];
+        for (int height :
+            heights) {
+            heightFreq[height]++;
+        }
+        int result = 0, currentHeight = 0;
+        for (int i = 0; i < heights.length; i++) {
+            while (heightFreq[currentHeight] == 0) {
+                // skip invalid height or the already finished height
+                currentHeight++;
+            }
+            // in non-decreased order, if the height is not in the correct position, add the result
+            if(currentHeight != heights[i]) {
+                result++;
+            }
+            heightFreq[currentHeight]--;
+        }
+
+        return result;
     }
 }
